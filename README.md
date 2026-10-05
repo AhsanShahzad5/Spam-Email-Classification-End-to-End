@@ -165,27 +165,6 @@ uv run pytest
 
 The tests cover health, spam and non-spam predictions, and blank-message validation.
 
-## Production readiness
-
-This is a strong **production-style foundation**, but it is not yet production-ready. It already demonstrates separation of concerns, startup-time initialization, input validation, pinned model compatibility, a health endpoint, and API-level tests.
-
-Before deploying it as a public or business-critical service, add:
-
-- A CI pipeline that runs the test suite for every change
-- Container packaging and production deployment configuration
-- Structured logging, request correlation IDs, metrics, and tracing
-- A readiness check that verifies the model is loaded and usable
-- Authentication and rate limiting if the service is not private
-- Model/data versioning, drift monitoring, and a documented retraining process
-- Cross-validation and leakage-free evaluation (split before fitting TF-IDF)
-- Dependency and container vulnerability scanning
-- Strict artifact provenance and integrity checks, or a safer artifact format
-- Load testing, worker sizing, timeouts, and resource limits
-
-## Security note
-
-Python pickle files can execute arbitrary code during deserialization. Only start this service with trusted artifacts. Never accept model or vectorizer files from users or unverified sources.
-
 ## Known limitations
 
 - Training data is imbalanced: roughly 87% ham and 13% spam.
